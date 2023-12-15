@@ -22,14 +22,12 @@ class SetRepository {
         _joiner.setB = set
     }
 
-    fun sortSetA() {
-        val newSet = _joiner.setA.split(",").map { it.trim() }.sorted()
-        _joiner.setA = newSet.joinToString(separator = ",")
-    }
-
-    fun sortSetB() {
-        val newSet = _joiner.setB.split(",").map { it.trim() }.sorted()
-        _joiner.setB = newSet.joinToString(separator = ",")
+    private fun sortedList(list: MutableList<String>): String {
+        val numberList = mutableListOf<Int>()
+        val stringList = mutableListOf<String>()
+        list.forEach { if (it.toIntOrNull() != null) numberList.add(it.toInt()) else stringList.add(it) }
+        val newList = numberList.sorted() + stringList.sorted()
+        return newList.joinToString(separator = ", ")
     }
 
     fun handleUnion() {
@@ -40,7 +38,7 @@ class SetRepository {
 
         arrayB.forEach { if (!newList.contains(it)) newList.add(it) }
 
-        _joiner.union = newList.joinToString(separator = ", ")
+        _joiner.union = sortedList(newList)
     }
 
     fun handleIntersection() {
@@ -50,7 +48,7 @@ class SetRepository {
 
         arrayB.forEach {if (arrayA.contains(it)) newList.add(it)}
 
-        _joiner.intersection = newList.joinToString(separator = ", ")
+        _joiner.intersection = sortedList(newList)
     }
 
     private fun differenceBetween(a: String, b: String): String {
@@ -61,7 +59,7 @@ class SetRepository {
 
         arrayB.forEach {if (arrayA.contains(it)) newList.remove(it)}
 
-        return newList.joinToString(separator = ", ")
+        return sortedList(newList)
     }
 
     fun handleDifferenceAB() {

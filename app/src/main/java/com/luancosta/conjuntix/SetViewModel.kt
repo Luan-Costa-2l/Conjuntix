@@ -22,11 +22,6 @@ class SetViewModel: ViewModel() {
     val differenceAB: MutableState<String> = _differenceAB
     val differenceBA: MutableState<String> = _differenceBA
 
-    fun sortSets() {
-        _repository.sortSetA()
-        _repository.sortSetB()
-    }
-
     fun handleSetA(set: String) {
         _repository.updateSetA(set)
         _setA.value = _repository.getJoiner().setA
@@ -68,7 +63,6 @@ class SetViewModel: ViewModel() {
     }
 
     fun getAllOperation() {
-        sortSets()
         union()
         intersection()
         differenceAB()
