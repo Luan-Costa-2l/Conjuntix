@@ -82,6 +82,7 @@ fun Conjuntix(viewModel: SetViewModel) {
             painter = painterResource(id = R.drawable.logo),
             contentDescription = null,
             modifier = Modifier
+                .widthIn(max = 400.dp)
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp),
             contentScale = ContentScale.FillWidth
