@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Conjuntix</string>
+    <string name="ad_mob_banner_id">ca-app-pub-7349487315079330/2178157921</string>
+    <string name="ad_mob_banner_id_test">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
